@@ -1,4 +1,3 @@
-
 /* ========================================
    PROJECT TOKYO — PORTFOLIO DESIGN
    ======================================== */
@@ -24,7 +23,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: 100px;
 }
 
 body {
@@ -53,13 +52,15 @@ button {
   font: inherit;
 }
 
-/* Navigation */
+/* ========================================
+   NAVIGATION
+   ======================================== */
 
 header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
 }
@@ -72,18 +73,39 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 22px;
 }
 
-nav > a {
+nav .brand {
+  flex-shrink: 0;
   color: var(--text);
   font-size: 1.05rem;
   font-weight: 750;
   letter-spacing: -0.03em;
 }
 
-nav > div {
+.nav-links {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 550;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.language-switch {
+  display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 5px;
   padding: 4px;
@@ -93,13 +115,14 @@ nav > div {
 }
 
 nav button {
-  padding: 7px 13px;
+  padding: 7px 11px;
   color: var(--muted);
   background: transparent;
   border: 0;
   border-radius: 999px;
   cursor: pointer;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -112,7 +135,9 @@ nav button[aria-pressed="true"] {
   background: var(--accent);
 }
 
-/* Main content */
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
 
 main {
   max-width: var(--content-width);
@@ -127,9 +152,12 @@ section {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  scroll-margin-top: 100px;
 }
 
-/* Hero section */
+/* ========================================
+   HERO SECTION
+   ======================================== */
 
 #home {
   min-height: 370px;
@@ -178,7 +206,9 @@ h1 {
   font-size: 1.08rem;
 }
 
-/* Section headings */
+/* ========================================
+   SECTION HEADINGS
+   ======================================== */
 
 h2 {
   margin: 0 0 14px;
@@ -193,7 +223,9 @@ section > p {
   color: var(--muted);
 }
 
-/* Footer */
+/* ========================================
+   FOOTER
+   ======================================== */
 
 footer {
   padding: 26px 20px 34px;
@@ -206,7 +238,9 @@ footer p {
   margin: 0;
 }
 
-/* Keyboard accessibility */
+/* ========================================
+   KEYBOARD ACCESSIBILITY
+   ======================================== */
 
 a:focus-visible,
 button:focus-visible {
@@ -214,16 +248,32 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* Responsive layout */
+/* ========================================
+   RESPONSIVE LAYOUT
+   ======================================== */
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   nav {
-    min-height: 68px;
     padding: 12px 18px;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  nav > a {
+  nav .brand {
     font-size: 0.95rem;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-links a {
+    font-size: 0.84rem;
   }
 
   nav button {
@@ -249,6 +299,37 @@ button:focus-visible {
     font-size: 1rem;
   }
 }
+
+@media (max-width: 380px) {
+  nav {
+    padding: 12px;
+  }
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  .nav-links a {
+    font-size: 0.76rem;
+  }
+
+  nav button {
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+
+  section {
+    padding: 20px 16px;
+  }
+
+  #home {
+    padding: 34px 20px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION ACCESSIBILITY
+   ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
   html {
