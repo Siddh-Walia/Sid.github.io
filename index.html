@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Business analysis, process improvement, and digital transformation portfolio.">
+  <title>Portfolio | ポートフォリオ</title>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="#home">Portfolio</a>
+
+      <div>
+        <button type="button" id="lang-en" aria-pressed="true">
+          English
+        </button>
+        <button type="button" id="lang-ja" aria-pressed="false">
+          日本語
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <p data-en="Business & Technology"
+         data-ja="ビジネスとテクノロジー">
+        Business & Technology
+      </p>
+
+      <h1 data-en="Turning business problems into practical solutions."
+          data-ja="ビジネス課題を、実践的な解決策へ。">
+        Turning business problems into practical solutions.
+      </h1>
+
+      <p data-en="A portfolio focused on business analysis, process improvement, analytics, and digital transformation."
+         data-ja="ビジネス分析、業務改善、データ分析、デジタルトランスフォーメーションに取り組むポートフォリオです。">
+        A portfolio focused on business analysis, process improvement,
+        analytics, and digital transformation.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2 data-en="Selected Projects" data-ja="主なプロジェクト">
+        Selected Projects
+      </h2>
+      <p data-en="Independent portfolio projects will be presented here."
+         data-ja="個人で制作するポートフォリオプロジェクトを掲載します。">
+        Independent portfolio projects will be presented here.
+      </p>
+    </section>
+
+    <section id="about">
+      <h2 data-en="About" data-ja="プロフィール">About</h2>
+      <p data-en="Professional background and skills."
+         data-ja="職務経験とスキルについて紹介します。">
+        Professional background and skills.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2 data-en="Contact" data-ja="お問い合わせ">Contact</h2>
+      <p data-en="Contact information will be added later."
+         data-ja="連絡先は後ほど掲載します。">
+        Contact information will be added later.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>English · 日本語</p>
+  </footer>
+
+  <script>
+    const englishButton = document.getElementById("lang-en");
+    const japaneseButton = document.getElementById("lang-ja");
+
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-en][data-ja]").forEach(element => {
+        element.textContent = element.dataset[language];
+      });
+
+      englishButton.setAttribute(
+        "aria-pressed", String(language === "en")
+      );
+      japaneseButton.setAttribute(
+        "aria-pressed", String(language === "ja")
+      );
+    }
+
+    englishButton.addEventListener("click", () => setLanguage("en"));
+    japaneseButton.addEventListener("click", () => setLanguage("ja"));
+  </script>
+</body>
+</html>
