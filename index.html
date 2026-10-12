@@ -47,6 +47,7 @@
       <h2 data-en="Selected Projects" data-ja="主なプロジェクト">
         Selected Projects
       </h2>
+
       <p data-en="Independent portfolio projects will be presented here."
          data-ja="個人で制作するポートフォリオプロジェクトを掲載します。">
         Independent portfolio projects will be presented here.
@@ -55,6 +56,7 @@
 
     <section id="about">
       <h2 data-en="About" data-ja="プロフィール">About</h2>
+
       <p data-en="Professional background and skills."
          data-ja="職務経験とスキルについて紹介します。">
         Professional background and skills.
@@ -63,6 +65,7 @@
 
     <section id="contact">
       <h2 data-en="Contact" data-ja="お問い合わせ">Contact</h2>
+
       <p data-en="Contact information will be added later."
          data-ja="連絡先は後ほど掲載します。">
         Contact information will be added later.
@@ -78,7 +81,7 @@
     const englishButton = document.getElementById("lang-en");
     const japaneseButton = document.getElementById("lang-ja");
 
-    function setLanguage(language) {
+    function setLanguage(language, savePreference = true) {
       document.documentElement.lang = language;
 
       document.querySelectorAll("[data-en][data-ja]").forEach(element => {
@@ -88,13 +91,36 @@
       englishButton.setAttribute(
         "aria-pressed", String(language === "en")
       );
+
       japaneseButton.setAttribute(
         "aria-pressed", String(language === "ja")
       );
+
+      if (savePreference) {
+        try {
+          localStorage.setItem("portfolio-language", language);
+        } catch (error) {
+          // The language switch still works if storage is unavailable.
+        }
+      }
     }
 
     englishButton.addEventListener("click", () => setLanguage("en"));
     japaneseButton.addEventListener("click", () => setLanguage("ja"));
+
+    let savedLanguage = "en";
+
+    try {
+      const saved = localStorage.getItem("portfolio-language");
+
+      if (saved === "en" || saved === "ja") {
+        savedLanguage = saved;
+      }
+    } catch (error) {
+      // English remains the default if storage is unavailable.
+    }
+
+    setLanguage(savedLanguage, false);
   </script>
 </body>
 </html>
