@@ -1,10 +1,11 @@
+
 /* ========================================
    PROJECT TOKYO — PORTFOLIO DESIGN
    ======================================== */
 
 :root {
   color-scheme: light;
-  --page-bg: #f7f8fa;
+  --page-bg: #f5f7fa;
   --surface: #ffffff;
   --text: #17212f;
   --muted: #647184;
@@ -52,9 +53,7 @@ button {
   font: inherit;
 }
 
-/* ========================================
-   NAVIGATION
-   ======================================== */
+/* Navigation */
 
 header {
   position: sticky;
@@ -96,7 +95,6 @@ nav .brand {
   font-size: 0.9rem;
   font-weight: 550;
   white-space: nowrap;
-  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
@@ -135,9 +133,7 @@ nav button[aria-pressed="true"] {
   background: var(--accent);
 }
 
-/* ========================================
-   MAIN CONTENT
-   ======================================== */
+/* Main layout */
 
 main {
   max-width: var(--content-width);
@@ -147,20 +143,65 @@ main {
 
 section {
   margin-bottom: 24px;
-  padding: 34px;
+  padding: 36px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  scroll-margin-top: 100px;
 }
 
-/* ========================================
-   HERO SECTION
-   ======================================== */
+section > p {
+  color: var(--muted);
+}
 
-#home {
-  min-height: 370px;
+section > p:not(.eyebrow) {
+  max-width: 800px;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text);
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 720;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  line-height: 1.4;
+}
+
+section > p {
+  margin-top: 0;
+}
+
+/* Small section labels */
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--accent) !important;
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 400px;
   padding: 64px 48px;
   display: flex;
   flex-direction: column;
@@ -169,63 +210,181 @@ section {
   background:
     radial-gradient(
       ellipse at top right,
-      rgba(36, 87, 197, 0.09),
+      rgba(36, 87, 197, 0.10),
       transparent 55%
     ),
     var(--surface);
 }
 
-#home > p:first-child {
-  margin: 0 0 16px;
-  color: var(--accent);
-  font-size: 0.82rem;
-  font-weight: 750;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-h1,
-h2,
-p {
-  overflow-wrap: anywhere;
-}
-
-h1 {
-  max-width: 760px;
+.hero h1 {
+  max-width: 780px;
   margin: 0 0 20px;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 750;
-  line-height: 1.16;
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  font-weight: 760;
+  line-height: 1.13;
   letter-spacing: -0.045em;
 }
 
-#home > p:last-child {
-  max-width: 680px;
+.hero > p:not(.eyebrow) {
+  max-width: 700px;
   margin: 0;
-  color: var(--muted);
   font-size: 1.08rem;
 }
 
-/* ========================================
-   SECTION HEADINGS
-   ======================================== */
-
-h2 {
-  margin: 0 0 14px;
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  font-weight: 720;
-  line-height: 1.3;
-  letter-spacing: -0.025em;
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
 }
 
-section > p {
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 19px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 650;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button-primary {
+  color: #ffffff;
+  background: var(--accent);
+}
+
+.button-primary:hover {
+  color: #ffffff;
+  background: var(--accent-hover);
+}
+
+.button-secondary {
+  color: var(--accent);
+  background: #ffffff;
+}
+
+.button-secondary:hover {
+  background: var(--soft-accent);
+}
+
+/* Career focus */
+
+.career-list {
+  margin: 24px 0 0;
+  padding-left: 28px;
+}
+
+.career-list li {
+  padding: 10px 0 10px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.career-list li:last-child {
+  border-bottom: 0;
+}
+
+.career-list li::marker {
+  color: var(--accent);
+  font-weight: 750;
+}
+
+/* Project groups and cards */
+
+.project-group {
+  margin-top: 34px;
+}
+
+.project-group > h3 {
+  margin: 0 0 16px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  min-width: 0;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: #b6c8ed;
+  transform: translateY(-2px);
+}
+
+.project-number {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.project-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  font-weight: 720;
+}
+
+.project-card > p:not(.project-number) {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 0.91rem;
+  line-height: 1.7;
+}
+
+.project-status {
+  display: inline-block;
+  margin-top: auto;
+  padding: 5px 9px;
+  color: #586579;
+  background: #f0f2f5;
+  border-radius: 5px;
+  font-size: 0.76rem;
+  font-weight: 650;
+}
+
+/* Skills */
+
+.skill-group {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.skill-group h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.skill-group p {
   margin: 0;
   color: var(--muted);
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
+.note {
+  margin-top: 24px;
+  padding: 14px 16px;
+  background: var(--soft-accent);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Footer */
 
 footer {
   padding: 26px 20px 34px;
@@ -238,9 +397,7 @@ footer p {
   margin: 0;
 }
 
-/* ========================================
-   KEYBOARD ACCESSIBILITY
-   ======================================== */
+/* Keyboard accessibility */
 
 a:focus-visible,
 button:focus-visible {
@@ -248,19 +405,27 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* ========================================
-   RESPONSIVE LAYOUT
-   ======================================== */
+/* Tablet and mobile */
+
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  nav {
+    gap: 14px;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+}
 
 @media (max-width: 760px) {
   nav {
     padding: 12px 18px;
     flex-wrap: wrap;
     gap: 12px;
-  }
-
-  nav .brand {
-    font-size: 0.95rem;
   }
 
   .nav-links {
@@ -276,27 +441,30 @@ button:focus-visible {
     font-size: 0.84rem;
   }
 
-  nav button {
-    padding: 6px 10px;
-    font-size: 0.82rem;
-  }
-
   main {
     padding: 24px 16px 42px;
   }
 
   section {
     margin-bottom: 16px;
-    padding: 24px 20px;
+    padding: 26px 22px;
   }
 
-  #home {
-    min-height: 320px;
-    padding: 42px 24px;
+  .hero {
+    min-height: 340px;
+    padding: 42px 26px;
   }
 
-  #home > p:last-child {
+  .hero > p:not(.eyebrow) {
     font-size: 1rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-group {
+    margin-top: 28px;
   }
 }
 
@@ -318,18 +486,16 @@ button:focus-visible {
     font-size: 0.78rem;
   }
 
-  section {
-    padding: 20px 16px;
+  .hero {
+    padding: 34px 20px;
   }
 
-  #home {
-    padding: 34px 20px;
+  section {
+    padding: 22px 18px;
   }
 }
 
-/* ========================================
-   REDUCED MOTION ACCESSIBILITY
-   ======================================== */
+/* Respect reduced-motion preferences */
 
 @media (prefers-reduced-motion: reduce) {
   html {
